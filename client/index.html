@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/jpeg" href="/images/personal/image-2-hero.jpg" />
+    <link rel="apple-touch-icon" href="/images/personal/image-2-hero.jpg" />
+    <meta name="description" content="Muhammad Aqil Khan — MERN Stack Developer & Full-Stack Web Developer. Engineering high-performance web applications, REST APIs, and modern interfaces." />
+    <title>Muhammad Aqil Khan | MERN Stack Developer</title>
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('aqil_portfolio_theme');
+          var theme = stored === 'light' ? 'light' : 'dark';
+          document.documentElement.classList.add(theme);
+          document.documentElement.setAttribute('data-theme', theme);
+          document.documentElement.style.colorScheme = theme;
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

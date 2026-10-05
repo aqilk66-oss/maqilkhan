@@ -1,0 +1,39 @@
+name: Production CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-and-build:
+    name: Build, Lint & Verify Release Candidate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Client & Server Dependencies
+        run: npm install
+
+      - name: Verify Client Production Build (Vite)
+        run: npm run build:client
+        env:
+          VITE_API_URL: https://api.aqilkhan.dev/api/v1
+          VITE_PUBLIC_SITE_URL: https://aqilkhan.dev
+
+      - name: Verify Server Startup Handshake (Syntax & Routes)
+        run: |
+          node -e "
+            import('./server/src/app.js')
+              .then(() => console.log('✓ Express Application loaded cleanly'))
+              .catch(err => { console.error(err); process.exit(1); })
+          "

@@ -1,0 +1,533 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Signature Dark Theme Palette (Default): Deep navy and electric cyan/blue accents */
+    --bg-primary: #030712;
+    --bg-secondary: #070d1e;
+    --bg-elevated: #0b132b;
+    --bg-card: rgba(11, 19, 43, 0.75);
+    --border-subtle: rgba(30, 41, 59, 0.8);
+    --border-strong: #1e293b;
+    --accent-primary: #00f2fe;
+    --accent-secondary: #4facfe;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+
+    /* Motion Timing System */
+    --motion-fast: 150ms;
+    --motion-normal: 350ms;
+    --motion-major: 650ms;
+    --motion-cinematic: 1000ms;
+
+    /* Motion Curves */
+    --ease-standard: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-enter: cubic-bezier(0, 0, 0.2, 1);
+    --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+    --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .light, [data-theme="light"] {
+    /* Light Theme Palette: Crisp, slate-blue tint, high contrast, clean depth */
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --bg-elevated: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --border-subtle: rgba(148, 163, 184, 0.3);
+    --border-strong: #cbd5e1;
+    --accent-primary: #0284c7;
+    --accent-secondary: #0ea5e9;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+  }
+
+  .dark, [data-theme="dark"] {
+    --bg-primary: #030712;
+    --bg-secondary: #070d1e;
+    --bg-elevated: #0b132b;
+    --bg-card: rgba(11, 19, 43, 0.75);
+    --border-subtle: rgba(30, 41, 59, 0.8);
+    --border-strong: #1e293b;
+    --accent-primary: #00f2fe;
+    --accent-secondary: #4facfe;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+  }
+
+  html {
+    scroll-behavior: auto; /* Managed by Lenis */
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  /* =========================================================================
+     COMPREHENSIVE EDITORIAL DESIGN SYSTEM (LIGHT & DARK DUAL-PALETTE)
+     ========================================================================= */
+
+  /* 1. Global Dark Tokens (Default) */
+  :root, .dark, [data-theme="dark"] {
+    --bg-page: #030712;
+    --bg-surface: #070d1e;
+    --bg-surface-elevated: #0b132b;
+    --bg-surface-card: #0b132b;
+    --bg-chip: #030712;
+    --bg-input: #030712;
+    
+    --border-subtle: #1e293b;
+    --border-card: #1e293b;
+    --border-hover: #334155;
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-faint: #64748b;
+    
+    --accent-primary: #00f2fe;
+    --accent-secondary: #4facfe;
+    --accent-glow: rgba(0, 242, 254, 0.22);
+    
+    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    --card-shadow-hover: 0 20px 35px -10px rgba(0, 0, 0, 0.75);
+    
+    --nav-bg: rgba(3, 7, 18, 0.85);
+    --nav-border: #1e293b;
+  }
+
+  /* 2. Professional Light Mode Tokens */
+  .light, [data-theme="light"] {
+    /* Page is a warm/cool crisp off-white canvas */
+    --bg-page: #f1f5f9;
+    /* Cards and elevated components pop as pure, clean surfaces */
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #ffffff;
+    --bg-surface-card: #ffffff;
+    /* Chips and tags have subtle cool-slate contrast */
+    --bg-chip: #f8fafc;
+    --bg-input: #ffffff;
+    
+    /* Clean, visible slate borders preventing the white-wash look */
+    --border-subtle: #e2e8f0;
+    --border-card: #cbd5e1;
+    --border-hover: #94a3b8;
+    
+    /* Deep navy/near-black for maximum contrast & WCAG AAA compliance */
+    --text-primary: #090d16;
+    --text-secondary: #1e293b;
+    --text-muted: #475569;
+    --text-faint: #64748b;
+    
+    /* Electric cobalt & sapphire brand accents tailored for daylight */
+    --accent-primary: #0284c7;
+    --accent-secondary: #0369a1;
+    --accent-glow: rgba(2, 132, 199, 0.18);
+    
+    /* Elegant multi-layer elevation shadows */
+    --card-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+    --card-shadow-hover: 0 16px 28px -6px rgba(15, 23, 42, 0.12), 0 6px 12px -3px rgba(15, 23, 42, 0.06);
+    
+    --nav-bg: rgba(255, 255, 255, 0.92);
+    --nav-border: #e2e8f0;
+  }
+
+  html {
+    scroll-behavior: auto; /* Managed by Lenis */
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  h1, h2, h3, .font-heading {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* Custom high-end scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-page);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-hover);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+  }
+
+  /* =========================================================================
+     LIGHT MODE COMPLETE SURFACE, TYPOGRAPHY, BUTTON & COMPONENT SYSTEM
+     ========================================================================= */
+
+  /* 1. Page Background & Section Isolation */
+  .light,
+  [data-theme="light"],
+  .light body,
+  [data-theme="light"] body {
+    background-color: var(--bg-page) !important;
+    color: var(--text-primary) !important;
+  }
+
+  /* Page base background */
+  .light section.bg-navy-950,
+  [data-theme="light"] section.bg-navy-950,
+  .light div.bg-navy-950.min-h-screen,
+  [data-theme="light"] div.bg-navy-950.min-h-screen,
+  .light main .bg-navy-950,
+  [data-theme="light"] main .bg-navy-950 {
+    background-color: var(--bg-page) !important;
+  }
+
+  .light section,
+  [data-theme="light"] section {
+    background-color: transparent !important;
+  }
+
+  /* 2. Elevated Cards & Containers across ALL sections (Skills, Education, Journey, Approach, Projects) */
+  .light .bg-navy-900,
+  .light .bg-navy-900\/80,
+  .light .bg-navy-900\/60,
+  .light .bg-navy-900\/50,
+  .light .bg-navy-900\/40,
+  .light .bg-navy-900\/30,
+  .light .bg-navy-950\/80,
+  .light .bg-navy-950\/90,
+  .light .bg-navy-950\/70,
+  .light .rounded-2xl.bg-navy-950\/80,
+  .light .rounded-3xl.bg-navy-950\/80,
+  [data-theme="light"] .bg-navy-900,
+  [data-theme="light"] .bg-navy-900\/80,
+  [data-theme="light"] .bg-navy-900\/60,
+  [data-theme="light"] .bg-navy-900\/50,
+  [data-theme="light"] .bg-navy-900\/40,
+  [data-theme="light"] .bg-navy-900\/30,
+  [data-theme="light"] .bg-navy-950\/80,
+  [data-theme="light"] .bg-navy-950\/90,
+  [data-theme="light"] .bg-navy-950\/70,
+  [data-theme="light"] .rounded-2xl.bg-navy-950\/80,
+  [data-theme="light"] .rounded-3xl.bg-navy-950\/80 {
+    background-color: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04) !important;
+  }
+
+  /* Specific fix for Skills cards gradient state */
+  .light .bg-gradient-to-br.from-navy-950.to-navy-900,
+  [data-theme="light"] .bg-gradient-to-br.from-navy-950.to-navy-900 {
+    background-image: none !important;
+    background-color: #ffffff !important;
+    border-color: #0284c7 !important;
+    box-shadow: 0 4px 18px -2px rgba(2, 132, 199, 0.12), 0 2px 6px -1px rgba(15, 23, 42, 0.04) !important;
+  }
+
+  /* Skill icon boxes inside cards */
+  .light .w-8.h-8.rounded-lg.bg-navy-900,
+  .light .w-8.h-8.rounded-lg.bg-navy-950,
+  [data-theme="light"] .w-8.h-8.rounded-lg.bg-navy-900,
+  [data-theme="light"] .w-8.h-8.rounded-lg.bg-navy-950 {
+    background-color: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  /* Secondary elevation surfaces, preview backgrounds, & code blocks */
+  .light .bg-navy-850,
+  [data-theme="light"] .bg-navy-850 {
+    background-color: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  /* Remove deceptive white-out gradient overlays on cards */
+  .light .bg-gradient-to-b.from-navy-900,
+  .light .bg-gradient-to-b.from-navy-900\/80,
+  .light .bg-gradient-to-r.from-navy-900,
+  [data-theme="light"] .bg-gradient-to-b.from-navy-900,
+  [data-theme="light"] .bg-gradient-to-b.from-navy-900\/80,
+  [data-theme="light"] .bg-gradient-to-r.from-navy-900 {
+    background-image: none !important;
+    background-color: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.1), 0 4px 12px -2px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  /* 3. High-Contrast Typography */
+  .light .text-white,
+  .light .text-slate-100,
+  [data-theme="light"] .text-white,
+  [data-theme="light"] .text-slate-100 {
+    color: #090d16 !important;
+    font-weight: 700;
+  }
+
+  .light .text-slate-200,
+  .light .text-slate-300,
+  [data-theme="light"] .text-slate-200,
+  [data-theme="light"] .text-slate-300 {
+    color: #1e293b !important;
+  }
+
+  .light .text-slate-400,
+  [data-theme="light"] .text-slate-400 {
+    color: #334155 !important;
+  }
+
+  .light .text-slate-500,
+  [data-theme="light"] .text-slate-500 {
+    color: #64748b !important;
+  }
+
+  .light .text-slate-600,
+  [data-theme="light"] .text-slate-600 {
+    color: #94a3b8 !important;
+  }
+
+  /* 4. Sharp, Deliberate Borders */
+  .light .border-slate-800,
+  .light .border-slate-800\/90,
+  .light .border-slate-800\/80,
+  .light .border-slate-800\/70,
+  .light .border-slate-800\/60,
+  [data-theme="light"] .border-slate-800,
+  [data-theme="light"] .border-slate-800\/90,
+  [data-theme="light"] .border-slate-800\/80,
+  [data-theme="light"] .border-slate-800\/70,
+  [data-theme="light"] .border-slate-800\/60 {
+    border-color: #cbd5e1 !important;
+  }
+
+  .light .border-slate-700,
+  .light .border-slate-700\/80,
+  .light .border-slate-700\/60,
+  [data-theme="light"] .border-slate-700,
+  [data-theme="light"] .border-slate-700\/80,
+  [data-theme="light"] .border-slate-700\/60 {
+    border-color: #94a3b8 !important;
+  }
+
+  /* 5. Chips, Technology Tags, and Badges */
+  .light .bg-navy-950.border-slate-800,
+  .light .bg-navy-950\/80.border-slate-800,
+  .light .bg-navy-950\/90.border-slate-800\/80,
+  [data-theme="light"] .bg-navy-950.border-slate-800,
+  [data-theme="light"] .bg-navy-950\/80.border-slate-800,
+  [data-theme="light"] .bg-navy-950\/90.border-slate-800\/80 {
+    background-color: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+    color: #1e293b !important;
+  }
+
+  .light .text-electric-cyan,
+  [data-theme="light"] .text-electric-cyan {
+    color: #0284c7 !important;
+  }
+
+  .light .bg-electric-cyan\/10,
+  .light .bg-electric-cyan\/15,
+  .light .bg-electric-cyan\/20,
+  [data-theme="light"] .bg-electric-cyan\/10,
+  [data-theme="light"] .bg-electric-cyan\/15,
+  [data-theme="light"] .bg-electric-cyan\/20 {
+    background-color: rgba(2, 132, 199, 0.1) !important;
+    color: #0284c7 !important;
+  }
+
+  .light .border-electric-cyan\/20,
+  .light .border-electric-cyan\/30,
+  .light .border-electric-cyan\/40,
+  [data-theme="light"] .border-electric-cyan\/20,
+  [data-theme="light"] .border-electric-cyan\/30,
+  [data-theme="light"] .border-electric-cyan\/40 {
+    border-color: rgba(2, 132, 199, 0.35) !important;
+  }
+
+  /* 6. Primary and Secondary Action Buttons: No Washout */
+  /* Primary Vibrant Blue CTA Buttons */
+  .light .from-electric-cyan.to-electric-blue,
+  [data-theme="light"] .from-electric-cyan.to-electric-blue {
+    background-image: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid #0284c7 !important;
+    box-shadow: 0 4px 14px -1px rgba(2, 132, 199, 0.4) !important;
+  }
+
+  .light .from-electric-cyan.to-electric-blue:hover,
+  [data-theme="light"] .from-electric-cyan.to-electric-blue:hover {
+    background-image: linear-gradient(135deg, #0369a1 0%, #075985 100%) !important;
+    box-shadow: 0 6px 20px -2px rgba(2, 132, 199, 0.5) !important;
+    color: #ffffff !important;
+  }
+
+  .light .from-electric-cyan.to-electric-blue * {
+    color: #ffffff !important;
+  }
+
+  /* Secondary Structured Buttons */
+  .light .bg-navy-900.border-slate-700\/80,
+  .light .bg-navy-950.border-slate-700\/80,
+  .light .bg-navy-950.border-slate-700,
+  [data-theme="light"] .bg-navy-900.border-slate-700\/80,
+  [data-theme="light"] .bg-navy-950.border-slate-700\/80,
+  [data-theme="light"] .bg-navy-950.border-slate-700 {
+    background-color: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: #0f172a !important;
+    box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  .light .bg-navy-900.border-slate-700\/80:hover,
+  .light .bg-navy-950.border-slate-700\/80:hover,
+  .light .bg-navy-950.border-slate-700:hover,
+  [data-theme="light"] .bg-navy-900.border-slate-700\/80:hover,
+  [data-theme="light"] .bg-navy-950.border-slate-700\/80:hover,
+  [data-theme="light"] .bg-navy-950.border-slate-700:hover {
+    background-color: #f8fafc !important;
+    border-color: #0284c7 !important;
+    color: #0284c7 !important;
+    box-shadow: 0 4px 12px -2px rgba(2, 132, 199, 0.15) !important;
+  }
+
+  /* Category Tabs (Frontend, Backend, Database, Tools) in Skills & Projects */
+  .light button[role="tab"],
+  [data-theme="light"] button[role="tab"] {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #334155 !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  .light button[role="tab"]:hover,
+  [data-theme="light"] button[role="tab"]:hover {
+    border-color: #0284c7 !important;
+    color: #0284c7 !important;
+    background-color: #f8fafc !important;
+  }
+
+  .light button[role="tab"][aria-selected="true"],
+  [data-theme="light"] button[role="tab"][aria-selected="true"] {
+    background-image: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    color: #ffffff !important;
+    border-color: #0284c7 !important;
+    box-shadow: 0 4px 14px -1px rgba(2, 132, 199, 0.4) !important;
+  }
+
+  .light button[role="tab"][aria-selected="true"] *,
+  [data-theme="light"] button[role="tab"][aria-selected="true"] * {
+    color: #ffffff !important;
+  }
+
+  /* 7. Hover States: Responsive & Distinct */
+  .light .group:hover,
+  [data-theme="light"] .group:hover {
+    border-color: #94a3b8 !important;
+  }
+
+  .light article.group:hover,
+  .light .rounded-3xl.group:hover,
+  .light .rounded-2xl.group:hover,
+  [data-theme="light"] article.group:hover,
+  [data-theme="light"] .rounded-3xl.group:hover,
+  [data-theme="light"] .rounded-2xl.group:hover {
+    border-color: #0284c7 !important;
+    box-shadow: 0 16px 32px -6px rgba(15, 23, 42, 0.12), 0 6px 12px -3px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  /* 8. Form Controls & Inputs */
+  .light input,
+  .light textarea,
+  [data-theme="light"] input,
+  [data-theme="light"] textarea {
+    background-color: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: #0f172a !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  .light input:focus,
+  .light textarea:focus,
+  [data-theme="light"] input:focus,
+  [data-theme="light"] textarea:focus {
+    border-color: #0284c7 !important;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2) !important;
+    outline: none !important;
+  }
+
+  .light input::placeholder,
+  .light textarea::placeholder,
+  [data-theme="light"] input::placeholder,
+  [data-theme="light"] textarea::placeholder {
+    color: #94a3b8 !important;
+  }
+
+  /* 9. Navigation Bar & Modals */
+  .light nav,
+  .light header,
+  [data-theme="light"] nav,
+  [data-theme="light"] header {
+    background-color: rgba(255, 255, 255, 0.94) !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    backdrop-filter: blur(16px) !important;
+    box-shadow: 0 2px 10px -2px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  .light .fixed.inset-0.z-50,
+  [data-theme="light"] .fixed.inset-0.z-50 {
+    background-color: rgba(15, 23, 42, 0.45) !important;
+  }
+
+  /* 10. Role and Heading Gradients */
+  .light .bg-gradient-to-r.from-electric-cyan,
+  [data-theme="light"] .bg-gradient-to-r.from-electric-cyan {
+    background-image: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+  }
+
+  /* 11. Subtle Softening of Ambient Glowing Circles */
+  .light .blur-\[160px\],
+  .light .blur-\[140px\],
+  .light .blur-\[120px\],
+  .light .blur-\[100px\],
+  [data-theme="light"] .blur-\[160px\],
+  [data-theme="light"] .blur-\[140px\],
+  [data-theme="light"] .blur-\[120px\],
+  [data-theme="light"] .blur-\[100px\] {
+    opacity: 0.08 !important;
+  }
+
+  /* 12. Footer in Light Mode */
+  .light footer,
+  [data-theme="light"] footer {
+    background-color: #ffffff !important;
+    border-top: 1px solid #cbd5e1 !important;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+  }
+  .surface-frosted {
+    background: var(--bg-surface-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-subtle);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
